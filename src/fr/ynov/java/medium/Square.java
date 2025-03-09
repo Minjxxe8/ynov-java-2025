@@ -10,6 +10,10 @@ public class Square {
         return result;
     }
     public static void main(String[] args) {
-        square(679);
+        Scanner Inputnumber = new Scanner(System.in);
+        System.out.println("Choose a number : ");
+        int numberinput = Inputnumber.nextInt();
+
+        square(numberinput);
     }
 }
