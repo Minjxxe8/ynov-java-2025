@@ -1,9 +1,12 @@
 package fr.ynov.java.medium;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Person {
 
     public String name;
-    public int age;
+    public String birthDate;
     public String gender;
     public float height;
     public country nationality;
@@ -13,9 +16,9 @@ public class Person {
     }
 
 
-    public Person(String name, int age, String gender, float height, country nationality) {
+    public Person(String name, String gender, float height, country nationality, String birthDate) {
        this.name = name;
-       this.age = age;
+       this.birthDate = birthDate;
        this.gender = gender;
        this.height = height;
        this.nationality = nationality;
@@ -23,7 +26,7 @@ public class Person {
 
     public void Display() {
         System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
+        System.out.println("Age: " + getAge());
         System.out.println("Gender: " + gender);
         System.out.println("Height: " + height + " cm");
         System.out.println("Nationality: " + nationality);
@@ -32,8 +35,11 @@ public class Person {
     public String getName() {
         return name;
     }
-    public int getAge() {
-        return age;
+    public long getAge() {
+        LocalDate today = LocalDate.now();
+        LocalDate birthDate = LocalDate.parse(this.birthDate); // YYYY-MM-DD
+        long result = today.getYear() - birthDate.getYear();
+        return result;
     }
     public String getGender() {
         return gender;
@@ -44,7 +50,7 @@ public class Person {
 
 
     public static void main(String[] args) {
-        Person person = new Person("Léna", 18, "Female", 165, country.ITALY);
+        Person person = new Person("Léna", "Female", 165, country.ITALY, "2006-10-08");
         person.Display();
     }
 }
