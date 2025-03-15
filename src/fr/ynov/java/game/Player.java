@@ -6,15 +6,22 @@ public class Player {
     String name;
     int score;
 
-    public Player(String name) {
+    public Player() {
         this.name = getName();
         this.score = 0;
     }
 
     public String getName() {
+
         Scanner name = new Scanner(System.in);
-        System.out.println("What's your name ? : ");
-        String nameInput = name.nextLine();
+        System.out.println("Choose a Username ? : ");
+        String nameInput = name.nextLine().trim();
+
+        while (nameInput.isEmpty()) {
+            System.out.println("Please enter a valid Username : ");
+            nameInput = name.nextLine().trim();
+        }
+
         System.out.println("Good luck " + nameInput + " !");
         return nameInput;
     }
